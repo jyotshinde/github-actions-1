@@ -5,7 +5,7 @@ jobs:
         runs-on: ubuntu-latest
         steps:
             - name: get code
-              uses: github/checkout@v6
+              uses: actions/checkout@v4
             - name: install dependencies
               run: npm ci
             - name: lint package
