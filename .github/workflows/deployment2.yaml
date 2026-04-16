@@ -1,0 +1,36 @@
+name: workflow-1
+on: push
+jobs:
+    lint:
+        runs-on: ubuntu-latest
+        steps:
+            - name: get code
+              uses: github/checkout@v6
+            - name: install dependencies
+              run: npm ci
+            - name: lint package
+              run: npm run lint
+    build:
+        needs: lint
+        runs-on: ubuntu-latest
+        steps:
+            - name: get code
+              uses: github/checkout@v6
+            - name: install dependencies
+              run: npm ci           
+            - name: test it
+              run: npm run test
+    deploy:
+        needs: build
+        runs-on: ubuntu-latest
+        steps:
+            - name: get code
+              uses: github/checkout@v6
+            - name: install dependencies
+              run: npm ci           
+            - name: test it
+              run: npm run test
+            - name: run build
+              run: npm run build
+            - name: deploy code
+              run: echo "code is being deployed"
