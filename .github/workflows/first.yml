@@ -1,0 +1,14 @@
+name: first-workflow
+on: workflow_dispatch
+
+jobs:
+  first-job: 
+    runs-on: ubuntu-22.04
+    steps:
+      - name: print greetings
+        run: echo "hello dear, how are you..?"
+      - name: prinnt end
+        run: echo 'this is end'
+        
+  
+  
